@@ -39,6 +39,7 @@ namespace FDMProjectWeb
 
             app.UseStaticFiles();
 
+            // Default
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
