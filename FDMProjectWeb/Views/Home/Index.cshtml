@@ -1,23 +1,118 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
-<h1>Upload File</h1>
-<div class="row">
-    <section>
-        <form method="post" enctype="multipart/form-data"
-              asp-controller="Home" asp-action="Post">
-            <div class="form-group">
-                <div class="col-md-10">
-                    <p>Upload data in CSV:</p>
-                    <input type="file" name="files" multiple />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input type="submit" value="Upload" />
-                </div>
-            </div>
+    <header>
+        <img src="fdmLogo.png" alt="FDM Logo" id="fdmLogo">
+
+        <form action="/action_page.php">
+            Username:
+            <input type="text" name="fname">
+            <br> Password:
+            <input type="text" name="lname">
+            <br>
+            <input id="submit" type="submit" value="Submit">
+            <button id="logoutButton" type="button">Sign Out</button>
         </form>
-    </section>
-</div>
-<hr />
+
+    </header>
+    <div id="topContainer">
+        <p>Press the button to generate the chart: </p>
+        <nav id="reportGenNav">
+
+            <a>
+                <input id="reportBtn1" type="button" value="Length of time on site/Degree Classification">
+            </a>
+            <a>
+                <input id="reportBtn2" type="button" value="University/Placement Location">
+            </a>
+            <a>
+                <input id="reportBtn3" type="button" value="Subject/Job Role">
+            </a>
+            <a>
+                <input id="reportBtn4" type="button" value="Degree Classification/job Role">
+            </a>
+
+        </nav>
+        <br>
+    </div>
+    <div id="chartContainer">
+        <div id="chartControl">
+            <p>Chart Type</p>
+            <select id="type" class="dropdownSelect">
+                <option value="line">Line</option>
+                <option value="pie">Pie</option>
+                <option value="doughnut">Doughnut</option>
+                <option value="bar">Bar</option>
+                <option value="polarArea">Polar Area</option>
+                <option value="bubble">Bubble</option>
+                <option value="scatter">Scatter</option>
+            </select>
+
+            <p>Series</p>
+            <!-- might need to change the values as they wont match.-->
+            <select id="legend" class="dropdownSelect">
+                <option value="Stream Trained">Stream Trained</option>
+                <option value="Job Role">JobRole</option>
+                <option value="Placement Number">Placement Number</option>
+                <option value="Operating Location Name">Operating Location Name</option>
+                <option value="FDM Office">FDM Office</option>
+                <option value="Start Date">Start Date</option>
+                <option value="End Date">End Date</option>
+                <option value="Degree Classification">Degree Classification</option>
+                <option value="University of Study">University of Study</option>
+                <option value="Degree Subject">Degree Subject</option>
+            </select>
+
+            <p>Axis X</p>
+            <select id="axisX" class="dropdownSelect">
+                <option value="Stream Trained">Stream Trained</option>
+                <option value="Job Role">JobRole</option>
+                <option value="Placement Number">Placement Number</option>
+                <option value="Operating Location Name">Operating Location Name</option>
+                <option value="FDM Office">FDM Office</option>
+                <option value="Start Date">Start Date</option>
+                <option value="End Date">End Date</option>
+                <option value="Degree Classification">Degree Classification</option>
+                <option value="University of Study">University of Study</option>
+                <option value="Degree Subject">Degree Subject</option>
+            </select>
+
+            <p>Axis Y</p>
+            <select id="axisY" class="dropdownSelect">
+                <option value="Stream Trained">Stream Trained</option>
+                <option value="Job Role">JobRole</option>
+                <option value="Placement Number">Placement Number</option>
+                <option value="Operating Location Name">Operating Location Name</option>
+                <option value="FDM Office">FDM Office</option>
+                <option value="Start Date">Start Date</option>
+                <option value="End Date">End Date</option>
+                <option value="Degree Classification">Degree Classification</option>
+                <option value="University of Study">University of Study</option>
+                <option value="Degree Subject">Degree Subject</option>
+            </select>
+            <br>
+            <button id="reportGenButton" type="button">Generate custom report</button>
+            <br>
+        </div>
+        <br>
+        <nav id="leftSideDropdown">
+
+            <div class="chartDisplay">
+
+                <canvas id="myChart" style="border: none;" height="200" align="center"></canvas>
+
+            </div>
+            <br>
+            <form method="post" enctype="multipart/form-data"
+                  asp-controller="Home" asp-action="Post">
+                <p>Upload a file:</p>
+
+                <input type="file" name="files" multiple />
+                <br>
+
+                <input type="submit" value="Upload" />
+
+            </form>
+        </nav>
+
+    </div>

@@ -45,7 +45,8 @@ namespace FDMProjectWeb.Controllers
             return View("Index"); // Ok(new { files[0].FileName });
         }
 
-            public IActionResult About()
+        /*
+        public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
             return View();
@@ -56,7 +57,7 @@ namespace FDMProjectWeb.Controllers
             ViewData["Message"] = "Your contact page.";
             return View();
         }
-
+        */
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
