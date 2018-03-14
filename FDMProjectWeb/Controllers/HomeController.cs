@@ -6,50 +6,54 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FDMProjectWeb.Models;
 using System.Web;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace FDMProjectWeb.Controllers
 {
     public class HomeController : Controller
     {
+        public readonly IHostingEnvironment hostingEnvironment;
+
+        public HomeController(IHostingEnvironment he)
+        {
+            hostingEnvironment = he;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
-        // https://www.aurigma.com/upload-suite/developers/aspnet-mvc/how-to-upload-files-in-aspnet-mvc
-        [HttpPost]
-        public ActionResult Index(HttpPostedFileBase file)
+        [HttpPost("Home")]
+        public async Task<IActionResult> Post(List<IFormFile> files)
         {
-            if (file != null && file.ContentLength > 0)
-                try
-                {
-                    string path = Path.Combine(Server.MapPath("~/Images"),
-                                               Path.GetFileName(file.FileName));
-                    file.SaveAs(path);
-                    ViewBag.Message = "File uploaded successfully";
-                }
-                catch (Exception ex)
-                {
-                    ViewBag.Message = "ERROR:" + ex.Message.ToString();
-                }
-            else
+            var uploads = Path.Combine(hostingEnvironment.WebRootPath, "uploads");
+            foreach (var file in files)
             {
-                ViewBag.Message = "You have not specified a file.";
+                if (file.Length > 0)
+                {
+                    // Validation of CSV
+                    var filePath = Path.Combine(uploads, file.FileName); // data.csv
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(fileStream);
+                    }
+                }
             }
-            return View();
+            return View("Index"); // Ok(new { files[0].FileName });
         }
 
-        public IActionResult About()
+            public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
-
             return View();
         }
 
