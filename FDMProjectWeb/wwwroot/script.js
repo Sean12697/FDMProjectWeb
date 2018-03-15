@@ -39,11 +39,15 @@ function init() {
         // Call shit here
 
         var type = document.getElementById("type").value;
-        var label = document.getElementById("legend").value;
+        var label = document.getElementById("dataOne").value;
+        var label2 = document.getElementById("dataTwo").value;
 
         var all = trunk(data, label);
+        var all2 = trunk(data, label2);
         var legends = getUnique(all);
+        var legends2 = getUnique(all2);
         var unique = getUniqueCount(all, legends);
+        var unique2 = getUniqueCount(all2, legends2);
         //console.log(legends);
         //console.log(unique);
 
@@ -56,35 +60,44 @@ function init() {
         //console.log(end);
         //console.log(diff);
 
-        doShit(type, label, legends, unique, []);
+        doShit(type, label, legends, unique, label2, legends2, unique2, []);
 
         //doShit(document.getElementById("type").value, data.map(a => a[document.getElementById("legend").value]), data.map(a => a[document.getElementById("axisX").value]), data.map(a => a[document.getElementById("axisY").value]));
     });
 }
 
 document.getElementById("type").addEventListener("change", init);
-document.getElementById("legend").addEventListener("change", init);
-document.getElementById("axisX").addEventListener("change", init);
-document.getElementById("axisY").addEventListener("change", init);
+document.getElementById("dataOne").addEventListener("change", init);
+document.getElementById("dataTwo").addEventListener("change", init);
 
-function doShit(type, label, legend, axisX, axisY) {
+function doShit(type, label, legend, dataOne, label2, legend2, dataTwo) {
     
     var ctx = document.getElementById("myChart").getContext('2d');
     var bc = [];
-    for (var i = 0; i < axisX.length; i++) bc.push('rgba(' + getRandomInt(255) + ', ' + getRandomInt(255) + ', ' + getRandomInt(255) +', 0.2)');
+    for (var i = 0; i < dataOne.length; i++) bc.push('rgba(' + getRandomInt(255) + ', ' + getRandomInt(255) + ', ' + getRandomInt(255) +', 0.2)');
+    for (var i = 0; i < dataTwo.length; i++) bc.push('rgba(' + getRandomInt(255) + ', ' + getRandomInt(255) + ', ' + getRandomInt(255) + ', 0.2)');
 
     var myChart = new Chart(ctx, {
         type: type,
         data: {
             labels: legend,
+            labels: legend2,
             datasets: [{
+
                 label: label, 
-                data: axisX,
+                data: dataOne,
                 backgroundColor: bc,
                 borderWidth: 1
-        }]
+            },
+            {
+                label: label2,
+                data: dataTwo,
+                backgroundColor: bc,
+                borderWidth: 1,
+                }]
         },
         options: {
+            
             scales: {
                 yAxes: [{
                     ticks: {
