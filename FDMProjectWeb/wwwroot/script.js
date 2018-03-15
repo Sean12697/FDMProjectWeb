@@ -12,13 +12,53 @@ function loadJSON(callback) {
     xobj.send(null);
 }
 
+// Give it the whole data and property you want
+function trunk(JSON, prop) {
+    return JSON.map(a => a[prop]);
+}
+
+// Pass trunkated data (from array of objects, to the array)
+function getUnique(data) {
+    return unique = data.filter(function (item, pos) {
+        return data.indexOf(item) == pos;
+    });
+}
+
+// Pass whole array (["London", "London", "London", "Liverpool"]) and array from getUnique, for ["London", "Manchester", "Liverpool"] might return [31, 40, 1]
+function getUniqueCount(data, arr) {
+    var nums = [];
+    for (var i = 0; i < arr.length; i++) nums.push(0);
+    for (var i = 0; i < data.length; i++) for (var j = 0; j < arr.length; j++) if (data[i] == arr[j]) nums[j]++;
+    return nums;
+}
+
 function init() {
     loadJSON(function (response) {
         var data = JSON.parse(response);
-        console.log(data);
+        //console.log(data);
         // Call shit here
-        doShit(document.getElementById("type").value, data.map(a => a[document.getElementById("legend").value]),
-            data.map(a => a[document.getElementById("axisX").value]), data.map(a => a[document.getElementById("axisY").value]));
+
+        var type = document.getElementById("type").value;
+        var label = document.getElementById("legend").value;
+
+        var all = trunk(data, label);
+        var legends = getUnique(all);
+        var unique = getUniqueCount(all, legends);
+        //console.log(legends);
+        //console.log(unique);
+
+        // ON SERVICE TIME
+        var start = trunk(data, "Start Date");
+        var end = trunk(data, "End Date");
+        var diff = [];
+        for (var i = 0; i < start.length; i++) diff.push(datediff(parseDate(start[i]), parseDate(end[i])));
+        //console.log(start);
+        //console.log(end);
+        //console.log(diff);
+
+        doShit(type, label, legends, unique, []);
+
+        //doShit(document.getElementById("type").value, data.map(a => a[document.getElementById("legend").value]), data.map(a => a[document.getElementById("axisX").value]), data.map(a => a[document.getElementById("axisY").value]));
     });
 }
 
@@ -26,39 +66,21 @@ document.getElementById("type").addEventListener("change", init);
 document.getElementById("legend").addEventListener("change", init);
 document.getElementById("axisX").addEventListener("change", init);
 document.getElementById("axisY").addEventListener("change", init);
-init();
 
-function doShit(type, legend, axisX, axisY) {
-    
-    console.log(legend);
-    console.log(axisX);
-    console.log(axisY);
+function doShit(type, label, legend, axisX, axisY) {
     
     var ctx = document.getElementById("myChart").getContext('2d');
+    var bc = [];
+    for (var i = 0; i < axisX.length; i++) bc.push('rgba(' + getRandomInt(255) + ', ' + getRandomInt(255) + ', ' + getRandomInt(255) +', 0.2)');
 
     var myChart = new Chart(ctx, {
         type: type,
         data: {
             labels: legend,
             datasets: [{
-                label: '# of Votes',//this needs to be relevent to the data
+                label: label, 
                 data: axisX,
-                backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-                borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
+                backgroundColor: bc,
                 borderWidth: 1
         }]
         },
@@ -72,4 +94,17 @@ function doShit(type, legend, axisX, axisY) {
             }
         }
     });
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+function parseDate(str) {
+    var mdy = str.split('/');
+    return new Date(mdy[2], mdy[1] - 1, mdy[0]);
+}
+
+function datediff(first, second) {
+    return Math.round((second - first) / (1000 * 60 * 60 * 24));
 }

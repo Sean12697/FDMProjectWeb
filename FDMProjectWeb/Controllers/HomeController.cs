@@ -34,14 +34,15 @@ namespace FDMProjectWeb.Controllers
             {
                 if (file.Length > 0)
                 {
-                    // Validation of CSV
-                    var filePath = Path.Combine(uploads, file.FileName); // data.csv
+                    String name = (file.FileName.Contains("csv")) ? "data.csv" : file.FileName;
+                    var filePath = Path.Combine(uploads, name);
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
                         await file.CopyToAsync(fileStream);
                     }
                 }
             }
+
             return View("Index"); // Ok(new { files[0].FileName });
         }
 

@@ -19,7 +19,7 @@
         <nav id="reportGenNav">
 
             
-                <input class="reportBtns, btn"reportBtn1" type="button" value="Length of time on site/Degree Classification">
+                <input class="reportBtns, btn" id="reportBtn1" type="button" value="Length of time on site/Degree Classification">
             
                 <input class="reportBtns, btn" id="reportBtn2" type="button" value="University/Placement Location">
             
@@ -47,7 +47,6 @@
             <p>Series</p>
             <!-- might need to change the values as they wont match.-->
             <select id="legend" class="dropdownSelect, btn">
-                <option value="None">None</option>
                 <option value="Stream Trained">Stream Trained</option>
                 <option value="Job Role">JobRole</option>
                 <option value="Placement Number">Placement Number</option>
@@ -62,6 +61,7 @@
 
             <p>Axis X</p>
             <select id="axisX" class="dropdownSelect, btn">
+                <option value="None" selected="selected">None</option>
                 <option value="Stream Trained">Stream Trained</option>
                 <option value="Job Role">JobRole</option>
                 <option value="Placement Number">Placement Number</option>
@@ -76,6 +76,7 @@
 
             <p>Axis Y</p>
             <select id="axisY" class="dropdownSelect, btn">
+                <option value="None" selected="selected">None</option>
                 <option value="Stream Trained">Stream Trained</option>
                 <option value="Job Role">JobRole</option>
                 <option value="Placement Number">Placement Number</option>
