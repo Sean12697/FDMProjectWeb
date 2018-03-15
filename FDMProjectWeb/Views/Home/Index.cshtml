@@ -15,26 +15,23 @@
      </form> -->
 </header>
     <div id="topContainer">
-        <p>Press the button to generate the chart: </p>
+        
         <nav id="reportGenNav">
-
+            <p>Press the button to generate the chart: </p>
+            <input class="reportBtns, btn" id="reportBtn1" type="button" value="Length of time on site/Degree Classification">
             
-                <input class="reportBtns, btn"reportBtn1" type="button" value="Length of time on site/Degree Classification">
+            <input class="reportBtns, btn" id="reportBtn2" type="button" value="University/Placement Location">
             
-                <input class="reportBtns, btn" id="reportBtn2" type="button" value="University/Placement Location">
+            <input class="reportBtns, btn" id="reportBtn3" type="button" value="Subject/Job Role">
             
-                <input class="reportBtns, btn" id="reportBtn3" type="button" value="Subject/Job Role">
-            
-                <input class="reportBtns, btn" id="reportBtn4" type="button" value="Degree Classification/job Role">
-            
-
+            <input class="reportBtns, btn" id="reportBtn4" type="button" value="Degree Classification/job Role">
         </nav>
         <br>
     </div>
     <div id="chartContainer">
         <div id="chartControl">
             <p>Chart Type</p>
-            <select id="type" class="dropdownSelect, btn">
+            <select  id="type" class="dropdownSelect, btn">
                 <option value="line">Line</option>
                 <option value="pie">Pie</option>
                 <option value="doughnut">Doughnut</option>
@@ -87,29 +84,26 @@
                 <option value="University of Study">University of Study</option>
                 <option value="Degree Subject">Degree Subject</option>
             </select>
-            <br>
+            <br /><br />
             <input class="btn" id="reportGenButton, btn" type="button" value="Generate custom report">
             <br>
-        </div>
-        <br>
-        <nav id="leftSideDropdown">
-
+            </div>
+            <br>
             <div class="chartDisplay">
 
                 <canvas id="myChart" ></canvas>
 
             </div>
             <br>
-            <form method="post" enctype="multipart/form-data"
-                  asp-controller="Home" asp-action="Post">
-                <p>Upload a file:</p>
+            <div id="fileUploadDiv">
+                <form method="post" enctype="multipart/form-data"
+                      asp-controller="Home" asp-action="Post">
+                    <p>Upload a file:</p>
 
-                <input class="btn" type="file" name="files" multiple />
-                <br>
+                    <input class="btn" type="file" name="files" multiple />
+                    <br>
 
-                <input class="btn" type="submit" value="Upload" />
-
-            </form>
-        </nav>
-
+                    <input class="btn" type="submit" value="Upload" />
+                </form>
+            </div>
     </div>

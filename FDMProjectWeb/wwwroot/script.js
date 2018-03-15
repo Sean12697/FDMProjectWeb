@@ -41,7 +41,7 @@ function doShit(type, legend, axisX, axisY) {
         data: {
             labels: legend,
             datasets: [{
-                label: '# of Votes',//this needs to be relevent to the data
+                label: 'Degree Class',//this needs to be relevent to the data
                 data: axisX,
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

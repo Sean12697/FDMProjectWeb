@@ -35,7 +35,9 @@ section {
 
 /*======== Navigation ==========*/
 
-
+#reportGenNav {
+    margin-left: 20px;
+}
 
 #fdmLogo {
     display: inline !important;
@@ -50,20 +52,15 @@ section {
 
 .dropdownSelect {
     display: block;
-    font-size: 13px;
+    margin-right: 20px !important;
 }
-
-
 
 #chartControl {
     width: 200px;
     background-color: white;
+    margin: 20px;
     float: left;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
 }
-
 
 #myChart {
     background-color: #373737;
@@ -71,45 +68,35 @@ section {
     max-width: 100%;
     min-width: 70%;
     margin-left: 20px;
-    margin-right: 20px;
-    padding: 10px;
+    width: 80% !important;
+    height: 40% !important;
 }
-
-
 
 #leftSideDropdown.active a:hover {
     color: #ffffff;
 }
 
 body {
-    height: auto;
-    color: black;
-    background-color: white;
-    font-family: serif;
+    font-family: 'Raleway', sans-serif;
     border-top: 3px solid #1daded;
 }
 
 .btn {
     background-color: #262626;
     border-radius: 10px;
-    border: 1px, ridge, solid;
+    border: 1px ridge solid;
     color: #f4f4f4;
     font-size: 15px;
+    font-family: 'Raleway', sans-serif;
 }
-
-
-
 
 #fileUpload {
     float: left;
     clear: both;
 }
 
-html {
-    font-family: "Open Sans", sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 300;
+#fileUploadDiv {
+    margin: 20px;
 }
 
 header {
@@ -120,13 +107,6 @@ header {
     border-top: cyan;
 }
 
-    header p {
-        color: black;
-        margin: 5px;
-        text-align: center;
-    }
-
-
 form {
     margin: 5px;
     text-align: right;
@@ -136,106 +116,16 @@ form {
     vertical-align: middle;
 }
 
-
-#chartTypeDropdown,
-#uploadFile {
-    display: block;
-}
-
-#topContainer {
-    background-color: white;
-}
-
-
-
-nav {
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-}
-
-
 /* ======== media queries ======== */
 
-@media (max-width: 385px) {
-    #uploadFile {
-        width: 50%;
-    }
+@media only screen and (max-width: 950px) {
 
-    #container {
-        font-size: 13px;
-    }
-
-    .reportBtns {
+    #reportGenNav input {
         width: 100%;
-    }
-}
-
-@media screen and (max-width: 455px) {
-    #myChart {
-        height: 50%;
-        width: 50%;
-        padding: 10%;
-        display: block;
+        margin: 0%;
     }
 
     #reportGenNav {
-        margin: 5px;
-        text-align: center;
-    }
-
-    .reportBtns {
-        width: 100%;
-    }
-}
-
-@media (max-width: 500px) {
-
-    form {
-        display: block;
-        float: right;
-        margin: 0;
-        margin-right: 20px;
-        margin-left: 20px;
-    }
-
-    .reportBtns {
-        width: 100%;
-    }
-}
-
-@media (max-width: 585px) {
-
-    #myChart {
-        display: block;
-    }
-
-    .reportBtns {
-        width: 100%;
-    }
-}
-
-@media (max-width: 930px) {
-
-    #myChart {
-        height: auto;
-        display: block;
-    }
-
-    .reportBtns {
-        width: 100%;
-    }
-}
-
-@media (max-width: 1199px) {
-
-    #myChart {
-        display: block;
-        width: 50%;
-        margin: 10px auto;
-    }
-
-    .reportBtns {
-        width: 100%;
+        margin: 0%;
     }
 }
