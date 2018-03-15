@@ -1,36 +1,32 @@
 ﻿@{
     ViewData["Title"] = "Dashboard";
 }
-    <header>
-        <img src="fdmLogo.png" alt="FDM Logo" id="fdmLogo">
+<header>
+    <img src="fdmLogo.png" alt="FDM Logo" id="fdmLogo">
 
-        <form action="/action_page.php">
-            Username:
-            <input type="text" name="fname">
-            <br> Password:
-            <input type="text" name="lname">
-            <br>
-            <input id="submit" type="submit" value="Submit">
-            <button id="logoutButton" type="button">Sign Out</button>
-        </form>
-
-    </header>
+    <!--- <form action="/action_page.php">
+         Username:
+         <input type="text" name="fname">
+         <br> Password:
+         <input type="text" name="lname">
+         <br>
+         <input id="submit" type="submit" value="Submit">
+         <button id="logoutButton" type="button">Sign Out</button>
+     </form> -->
+</header>
     <div id="topContainer">
         <p>Press the button to generate the chart: </p>
         <nav id="reportGenNav">
 
-            <a>
-                <input id="reportBtn1" type="button" value="Length of time on site/Degree Classification">
-            </a>
-            <a>
-                <input id="reportBtn2" type="button" value="University/Placement Location">
-            </a>
-            <a>
-                <input id="reportBtn3" type="button" value="Subject/Job Role">
-            </a>
-            <a>
-                <input id="reportBtn4" type="button" value="Degree Classification/job Role">
-            </a>
+            
+                <input class="reportBtns, btn"reportBtn1" type="button" value="Length of time on site/Degree Classification">
+            
+                <input class="reportBtns, btn" id="reportBtn2" type="button" value="University/Placement Location">
+            
+                <input class="reportBtns, btn" id="reportBtn3" type="button" value="Subject/Job Role">
+            
+                <input class="reportBtns, btn" id="reportBtn4" type="button" value="Degree Classification/job Role">
+            
 
         </nav>
         <br>
@@ -38,7 +34,7 @@
     <div id="chartContainer">
         <div id="chartControl">
             <p>Chart Type</p>
-            <select id="type" class="dropdownSelect">
+            <select id="type" class="dropdownSelect, btn">
                 <option value="line">Line</option>
                 <option value="pie">Pie</option>
                 <option value="doughnut">Doughnut</option>
@@ -50,7 +46,8 @@
 
             <p>Series</p>
             <!-- might need to change the values as they wont match.-->
-            <select id="legend" class="dropdownSelect">
+            <select id="legend" class="dropdownSelect, btn">
+                <option value="None">None</option>
                 <option value="Stream Trained">Stream Trained</option>
                 <option value="Job Role">JobRole</option>
                 <option value="Placement Number">Placement Number</option>
@@ -64,7 +61,7 @@
             </select>
 
             <p>Axis X</p>
-            <select id="axisX" class="dropdownSelect">
+            <select id="axisX" class="dropdownSelect, btn">
                 <option value="Stream Trained">Stream Trained</option>
                 <option value="Job Role">JobRole</option>
                 <option value="Placement Number">Placement Number</option>
@@ -78,7 +75,7 @@
             </select>
 
             <p>Axis Y</p>
-            <select id="axisY" class="dropdownSelect">
+            <select id="axisY" class="dropdownSelect, btn">
                 <option value="Stream Trained">Stream Trained</option>
                 <option value="Job Role">JobRole</option>
                 <option value="Placement Number">Placement Number</option>
@@ -91,7 +88,7 @@
                 <option value="Degree Subject">Degree Subject</option>
             </select>
             <br>
-            <button id="reportGenButton" type="button">Generate custom report</button>
+            <input class="btn" id="reportGenButton, btn" type="button" value="Generate custom report">
             <br>
         </div>
         <br>
@@ -99,7 +96,7 @@
 
             <div class="chartDisplay">
 
-                <canvas id="myChart" style="border: none;" height="200" align="center"></canvas>
+                <canvas id="myChart" ></canvas>
 
             </div>
             <br>
@@ -107,10 +104,10 @@
                   asp-controller="Home" asp-action="Post">
                 <p>Upload a file:</p>
 
-                <input type="file" name="files" multiple />
+                <input class="btn" type="file" name="files" multiple />
                 <br>
 
-                <input type="submit" value="Upload" />
+                <input class="btn" type="submit" value="Upload" />
 
             </form>
         </nav>

@@ -4,7 +4,7 @@ div,
 span,
 h1,
 h2,
-h3, 
+h3,
 h4,
 h5,
 h6,
@@ -38,82 +38,80 @@ section {
 
 
 #fdmLogo {
-   display: inline !important;
-	border: none !important;
-	box-shadow: none !important;
-	height: 5em !important;
-	margin: 0 .07em !important;
-	vertical-align: -0.1em !important;
-	background: none !important;
-	padding: 0 !important;
+    display: inline !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 5em !important;
+    margin: 0 .07em !important;
+    vertical-align: -0.1em !important;
+    background: none !important;
+    padding: 0 !important;
 }
 
 .dropdownSelect {
     display: block;
-    font-size:13px;
-   
+    font-size: 13px;
 }
 
 
 
-#chartControl  {
-	width:  200px;
-	background-color: white;
-	float:left;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	margin-left: 20px;
+#chartControl {
+    width: 200px;
+    background-color: white;
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
 }
 
 
-#myChart{
-background-color: black;
-text-align: right; 
-max-width: 100%;
-min-width: 70%;
-margin-left: 20px;	
+#myChart {
+    background-color: #373737;
+    text-align: right;
+    max-width: 100%;
+    min-width: 70%;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
 }
 
 
 
 #leftSideDropdown.active a:hover {
-color:#ffffff;
+    color: #ffffff;
 }
- 
+
 body {
-height: auto; 
-color: black;
-background-color:white;
-font-family: serif; 
-border-top: 3px solid #1daded;
+    height: auto;
+    color: black;
+    background-color: white;
+    font-family: serif;
+    border-top: 3px solid #1daded;
+}
+
+.btn {
+    background-color: #262626;
+    border-radius: 10px;
+    border: 1px, ridge, solid;
+    color: #f4f4f4;
+    font-size: 15px;
 }
 
 
-.dropdownSelect,
-#reportGenButton {
-    background-color: black;
-    color: white;
-    font-size: 13px;
-	
-}
-#uploadBtn1, #uploadBtn2, #uploadBtn3{
-    background-color: black;
-    color: white;
-    font-size: 13px;
-	
-}
 
 
 #fileUpload {
     float: left;
     clear: both;
 }
+
 html {
-font-family:"Open Sans", sans-serif;
-font-size:16px;
-line-height:24px;
-font-weight:300;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 300;
 }
+
 header {
     display: table;
     width: 100%;
@@ -121,134 +119,123 @@ header {
     background-color: #262626;
     border-top: cyan;
 }
-header p {
-    color: black; 
-    margin: 5px; 
-    text-align: center; 
-}
 
-
-form{
-
- margin: 5px; 
- text-align: right; 
- display: inline-block;
- margin-left: 310px;
- display: table-cell;
- vertical-align: middle;
- 
- 
-
-
- }
-
-
-#submit, #logoutButton{
-    text-align: right;
-	width: auto;
-    height: auto;
-    display: inline-block;
+    header p {
+        color: black;
+        margin: 5px;
+        text-align: center;
     }
 
+
+form {
+    margin: 5px;
+    text-align: right;
+    display: inline-block;
+    margin-left: 310px;
+    display: table-cell;
+    vertical-align: middle;
 }
+
+
 #chartTypeDropdown,
 #uploadFile {
     display: block;
-    
-
 }
- #topContainer{
-	 background-color:white;
- }
 
+#topContainer {
+    background-color: white;
+}
 
-
-#reportGenNav input {
-    color: #FFFFFF;
-	background-color: black;
-    }
-
-#reportGenNav input:hover {
-    background-color: #1E90FF;
-    color: #FFFFFF;
-    }
 
 
 nav {
     border-radius: 5px;
     -moz-border-radius: 5px;
-    -webkit-border-radius: 5px; 
-    }
-	
-	@media (max-width: 500px) {
-	
-form
-{
-    
-	display: block;
-	float: right;
-	margin: 0;
-	margin-right: 20px;
-	margin-left: 20px;
-	
+    -webkit-border-radius: 5px;
 }
-media (max-width: 585px) {
 
- #myChart {
-        display: block;
-        
-    }
 
-}
+/* ======== media queries ======== */
+
 @media (max-width: 385px) {
-    #uploadFile{
-    width:50%;
+    #uploadFile {
+        width: 50%;
     }
-    #container{
-	font-size: 13px;
-}
-   
-}
 
-@media screen(max-width: 930px) {
-	
-#myChart {
+    #container {
+        font-size: 13px;
+    }
 
-    background-color: black;
-    
-    height: auto;
-    display: block;
-  
-
-}
-}
-
-@media screen(max-width: 1199px) {
-	
-#myChart {
-
-display: block;
-width: 50%;
-margin: 10 auto;
-    
-    
-}
+    .reportBtns {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 455px) {
-	#myChart {
-		
-   height:50%;
-    width: 50%;
-  padding: auto 10%;
-    display: block;
+    #myChart {
+        height: 50%;
+        width: 50%;
+        padding: 10%;
+        display: block;
+    }
 
-	}
-	#reportGenNav{
-		
-	margin: 5px; 
-    text-align: center; 
-}
-	}
+    #reportGenNav {
+        margin: 5px;
+        text-align: center;
+    }
+
+    .reportBtns {
+        width: 100%;
+    }
 }
 
+@media (max-width: 500px) {
+
+    form {
+        display: block;
+        float: right;
+        margin: 0;
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    .reportBtns {
+        width: 100%;
+    }
+}
+
+@media (max-width: 585px) {
+
+    #myChart {
+        display: block;
+    }
+
+    .reportBtns {
+        width: 100%;
+    }
+}
+
+@media (max-width: 930px) {
+
+    #myChart {
+        height: auto;
+        display: block;
+    }
+
+    .reportBtns {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1199px) {
+
+    #myChart {
+        display: block;
+        width: 50%;
+        margin: 10px auto;
+    }
+
+    .reportBtns {
+        width: 100%;
+    }
+}

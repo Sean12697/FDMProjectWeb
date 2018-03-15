@@ -17,7 +17,8 @@ function init() {
         var data = JSON.parse(response);
         console.log(data);
         // Call shit here
-        doShit(document.getElementById("type").value, data.map(a => a[document.getElementById("legend").value]), data.map(a => a[document.getElementById("axisX").value]), data.map(a => a[document.getElementById("axisY").value]));
+        doShit(document.getElementById("type").value, data.map(a => a[document.getElementById("legend").value]),
+            data.map(a => a[document.getElementById("axisX").value]), data.map(a => a[document.getElementById("axisY").value]));
     });
 }
 
@@ -40,7 +41,7 @@ function doShit(type, legend, axisX, axisY) {
         data: {
             labels: legend,
             datasets: [{
-                label: '# of Votes',
+                label: '# of Votes',//this needs to be relevent to the data
                 data: axisX,
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
