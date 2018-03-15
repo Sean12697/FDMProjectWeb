@@ -4,15 +4,6 @@
 <header>
     <img src="fdmLogo.png" alt="FDM Logo" id="fdmLogo">
 
-    <!--- <form action="/action_page.php">
-         Username:
-         <input type="text" name="fname">
-         <br> Password:
-         <input type="text" name="lname">
-         <br>
-         <input id="submit" type="submit" value="Submit">
-         <button id="logoutButton" type="button">Sign Out</button>
-     </form> -->
 </header>
     <div id="topContainer">
         <p>Press the button to generate the chart: </p>
@@ -89,18 +80,18 @@
                 <option value="Degree Subject">Degree Subject</option>
             </select>
             <br>
-            <input class="btn" id="reportGenButton, btn" type="button" value="Generate custom report">
+          
             <br>
         </div>
         <br>
-        <nav id="leftSideDropdown">
+        <div class="chartDisplay">
 
-            <div class="chartDisplay">
+            <canvas id="myChart"></canvas>
 
-                <canvas id="myChart" ></canvas>
+        </div>
+        <br>
 
-            </div>
-            <br>
+        <div id="fileUploadDiv">
             <form method="post" enctype="multipart/form-data"
                   asp-controller="Home" asp-action="Post">
                 <p>Upload a file:</p>
@@ -109,8 +100,8 @@
                 <br>
 
                 <input class="btn" type="submit" value="Upload" />
-
             </form>
-        </nav>
+        </div>
+
 
     </div>
