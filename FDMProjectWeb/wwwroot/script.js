@@ -52,7 +52,21 @@ function init() {
         var unique2 = getUniqueCount(all2, legends2);
         //console.log(legends);
         //console.log(unique);
+        
+        doShit(type, label, legends, unique, label2, legends2, unique2, []);
 
+        //doShit(document.getElementById("type").value, data.map(a => a[document.getElementById("legend").value]), data.map(a => a[document.getElementById("axisX").value]), data.map(a => a[document.getElementById("axisY").value]));
+    });
+}
+
+document.getElementById("type").addEventListener("change", init);
+document.getElementById("dataOne").addEventListener("change", init);
+document.getElementById("dataTwo").addEventListener("change", init);
+document.getElementById("reportBtn1").addEventListener("click", timeOnSite);
+
+function returnLengthOfTimeArr() {
+    loadJSON(function (response) {
+        var data = JSON.parse(response);
         // ON SERVICE TIME
         var start = trunk(data, "Start Date");
         var end = trunk(data, "End Date");
@@ -61,20 +75,76 @@ function init() {
         //console.log(start);
         //console.log(end);
         //console.log(diff);
-
-        doShit(type, label, legends, unique, label2, legends2, unique2, []);
-
-        //doShit(document.getElementById("type").value, data.map(a => a[document.getElementById("legend").value]), data.map(a => a[document.getElementById("axisX").value]), data.map(a => a[document.getElementById("axisY").value]));
+        return diff;
     });
 }
 
+function timeOnSite() {
+    loadJSON(function (response) {
+        var data = JSON.parse(response);
+        // ON SERVICE TIME
+        var start = trunk(data, "Start Date");
+        var end = trunk(data, "End Date");
+        var diff = [];
+        for (var i = 0; i < start.length; i++) diff.push(datediff(parseDate(start[i]), parseDate(end[i])));
+        //console.log(start);
+        //console.log(end);
+        //console.log(diff);
+        timeOnSiteChart(data, diff);
+    });
+}
 
-document.getElementById("type").addEventListener("change", init);
-document.getElementById("dataOne").addEventListener("change", init);
-document.getElementById("dataTwo").addEventListener("change", init);
+function timeOnSiteChart(data, times) {
+    document.getElementById("chartDisplay").innerHTML = "";
+    document.getElementById("chartDisplay").insertAdjacentHTML('beforeend', '<canvas id="myChart"></canvas>');
+    var ctx = document.getElementById("myChart").getContext('2d');
+    
+    var degrees = trunk(data, "Degree Subject");
+
+    var unqiueDegrees = getUnique(degrees);
+    var uniqueCount = getUniqueCount(degrees, unqiueDegrees);
+
+    var totals = [];
+    for (var i = 0; i < unqiueDegrees.length; i++) totals.push(0);
+    for (var i = 0; i < degrees.length; i++) for (var j = 0; j < unqiueDegrees.length; j++) if (degrees[i] == unqiueDegrees[j]) totals[j] += times[i];
+
+    var avg = [];
+    for (var i = 0; i < uniqueCount.length; i++) avg.push(totals[i] / uniqueCount[i]);
+
+    var bc = [];
+    for (var i = 0; i < unqiueDegrees.length; i++) bc.push('rgba(' + getRandomInt(255) + ', ' + getRandomInt(255) + ', ' + getRandomInt(255) + ', 0.2)');
+
+    console.log(degrees);
+    console.log(unqiueDegrees);
+    console.log(uniqueCount);
+    console.log(times);
+    console.log(totals);
+    console.log(avg);
+
+    var myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: unqiueDegrees,
+            datasets: [{
+                label: "Degrees",
+                data: avg, // Avg time Arr
+                backgroundColor: bc,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
 
 function doShit(type, label, legend, dataOne, label2, legend2, dataTwo) {
-
 
     var bc = [];
     for (var i = 0; i < dataOne.length; i++) bc.push('rgba(' + getRandomInt(255) + ', ' + getRandomInt(255) + ', ' + getRandomInt(255) +', 0.2)');
