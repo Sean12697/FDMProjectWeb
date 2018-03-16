@@ -87,7 +87,7 @@ function doShit(type, label, legend, dataOne, label2, legend2, dataTwo) {
     var myChart = new Chart(ctx, {
         type: type,
         data: {
-            labels: legend,
+            //labels: legend,
             labels: legend2,
             datasets: [{
 
