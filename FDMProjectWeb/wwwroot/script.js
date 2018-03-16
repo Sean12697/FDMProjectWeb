@@ -156,6 +156,8 @@ function overlapArr(data, placementLocation) {
             }
         }
     }
+
+    return nums;
 }
 
 function classJob() {
