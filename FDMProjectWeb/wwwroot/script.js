@@ -1,4 +1,5 @@
 window.addEventListener('load', init);
+window.addEventListener('resize', init);
 
 function loadJSON(callback) {
     var xobj = new XMLHttpRequest();
