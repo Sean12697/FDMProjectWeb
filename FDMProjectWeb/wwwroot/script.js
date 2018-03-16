@@ -1,6 +1,7 @@
 window.addEventListener('load', init);
 window.addEventListener('resize', init);
 
+
 function loadJSON(callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
@@ -67,16 +68,21 @@ function init() {
     });
 }
 
+
 document.getElementById("type").addEventListener("change", init);
 document.getElementById("dataOne").addEventListener("change", init);
 document.getElementById("dataTwo").addEventListener("change", init);
 
 function doShit(type, label, legend, dataOne, label2, legend2, dataTwo) {
-    
-    var ctx = document.getElementById("myChart").getContext('2d');
+
+
     var bc = [];
     for (var i = 0; i < dataOne.length; i++) bc.push('rgba(' + getRandomInt(255) + ', ' + getRandomInt(255) + ', ' + getRandomInt(255) +', 0.2)');
     for (var i = 0; i < dataTwo.length; i++) bc.push('rgba(' + getRandomInt(255) + ', ' + getRandomInt(255) + ', ' + getRandomInt(255) + ', 0.2)');
+
+    document.getElementById("chartDisplay").innerHTML = "";
+    document.getElementById("chartDisplay").insertAdjacentHTML('beforeend', '<canvas id="myChart"></canvas>');
+    var ctx = document.getElementById("myChart").getContext('2d');
 
     var myChart = new Chart(ctx, {
         type: type,
