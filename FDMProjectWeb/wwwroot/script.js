@@ -1,5 +1,4 @@
 window.addEventListener('load', init);
-window.addEventListener('resize', init);
 
 
 function loadJSON(callback) {
@@ -109,7 +108,7 @@ function timeOnSiteChart(data, times) {
     for (var i = 0; i < degrees.length; i++) for (var j = 0; j < unqiueDegrees.length; j++) if (degrees[i] == unqiueDegrees[j]) totals[j] += times[i];
 
     var avg = [];
-    for (var i = 0; i < uniqueCount.length; i++) avg.push(totals[i] / uniqueCount[i]);
+    for (var i = 0; i < uniqueCount.length; i++) avg.push(Math.round(totals[i] / uniqueCount[i]));
 
     var bc = [];
     for (var i = 0; i < unqiueDegrees.length; i++) bc.push('rgba(' + getRandomInt(255) + ', ' + getRandomInt(255) + ', ' + getRandomInt(255) + ', 0.2)');
@@ -126,7 +125,7 @@ function timeOnSiteChart(data, times) {
         data: {
             labels: unqiueDegrees,
             datasets: [{
-                label: "Degrees",
+                label: "Days spent on Site",
                 data: avg, // Avg time Arr
                 backgroundColor: bc,
                 borderWidth: 1
