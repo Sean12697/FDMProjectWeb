@@ -99,10 +99,9 @@ function universityPlacementChart(data) {
 
     var bc = [];
     for (var i = 0; i < uniqueUnis.length; i++) bc.push('rgba(' + getRandomInt(255) + ', ' + getRandomInt(255) + ', ' + getRandomInt(255) + ', 0.2)');
-
+    
     var datasets = [];
     for (var i = 0; i < uniquePlacement.length; i++) {
-
         datasets.push({
             label: uniquePlacement[i],
             data: overlapArr(data, uniquePlacement[i]), // tots
@@ -144,18 +143,16 @@ function universityPlacementChart(data) {
 // return overlapped, [10, 20, 10], numbers for each uni in a placement 
 function overlapArr(data, placementLocation) {
     var unis = trunk(data, "University of Study");
-    var placements = trunk(data, placementLocation);
+    var placements = trunk(data, "Operating Location Name");
     var uniqueUnis = getUnique(unis);
 
     var nums = [];
     for (var i = 0; i < uniqueUnis.length; i++) nums.push(0);
 
     for (var i = 0; i < unis.length; i++) {
-        for (var j = 0; j < placements.length; j++) {
-            for (var t = 0; t < uniqueUnis.length; t++) {
-                if (uniqueUnis[t] == unis[i] && placements[j] == placementLocation) {
-                    nums[t]++;
-                }
+        for (var t = 0; t < uniqueUnis.length; t++) {
+            if (uniqueUnis[t] == unis[i] && placements[i] == placementLocation) {
+                nums[t]++;
             }
         }
     }
