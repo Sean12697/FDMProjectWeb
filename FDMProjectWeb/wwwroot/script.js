@@ -1,8 +1,5 @@
 window.addEventListener('load', init);
-<<<<<<< HEAD
-=======
 
->>>>>>> a5fdb823f9cde0c692851b9ffba8e69dc4ee5b53
 
 function loadJSON(callback) {
     var xobj = new XMLHttpRequest();
